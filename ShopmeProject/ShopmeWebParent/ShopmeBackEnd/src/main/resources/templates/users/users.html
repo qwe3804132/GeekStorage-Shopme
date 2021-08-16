@@ -15,22 +15,11 @@
 		</div>
 		<div th:if="${message !=null}" class="alert alert-success text-center">[[${message}]]</div>
 	</div>
-	<div>
-		<form th:action="@{/users/page/1}" class="form-inline m-3">
-			<input type="hidden" name="sortField" th:value="${sortField}">
-			<input type="hidden" name="sortDir" th:value="${sortDir}">
-			Filter:&nbsp;
-			<input type="search" name="keyword" required th:value="${keyword}" class="form-control" />
-			&nbsp; &nbsp;
-			<button type="submit" class="btn btn-primary">
-				<i class="fas fa-search "></i>
-			</button>
-			&nbsp; &nbsp;
-			<button type="button" onclick="clearFilter()" class="btn btn-secondary">
-				<i class="fas fa-eraser"></i>
-			</button>
-		</form>
-	</div>
+	
+	<div th:replace="fragments::search_form('/users/page/1')"></div>
+	
+	
+	
 	<div class="full-details">
 		<table class="table table-bordered table-striped table-hover table-responsive-xl">
 			<thead class="thead-dark">

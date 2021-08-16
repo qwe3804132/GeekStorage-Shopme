@@ -28,4 +28,6 @@ public interface CategoryRepository extends PagingAndSortingRepository<Category,
 	@Modifying
 	public void updateEnabledStatus(Integer id, boolean enabled);
 
+	@Query("select c from Category c where c.name LIKE %?1%")
+	public Page<Category> search(String keyword, Pageable pageable);
 }
