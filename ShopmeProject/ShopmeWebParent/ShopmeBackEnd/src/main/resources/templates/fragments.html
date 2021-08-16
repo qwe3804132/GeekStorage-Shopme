@@ -26,17 +26,28 @@
 		<span th:if="${sortField==fieldName}"
 			th:class="${sortDir=='asc'?'fas fa-sort-up':'fas fa-sort-down'}"></span>
 	</th>
-	
-	
 	<a th:fragment="page_link(pageNum, label)" class="page-link"
 		th:href="@{'/users/page/'+${pageNum}+'?sortField='+${sortField}+'&sortDir='+${sortDir}+${keyword!=null?'&keyword='+keyword:''}}">[[${label}]]
 	</a>
-	
-	<div th:fragment="cartegory_status">
-		<a class="fas fa-circle fa-2x icon-dark link-confirm"
-			title="disable this user"> </a>
+	<div th:fragment="category_status" th:remove="tag">
+		<a th:if="${cat.enabled==true}"
+			class="fas fa-check-circle fa-2x icon-green link-confirm"
+			th:href="@{'/categories/'+${cat.id}+'/enabled/false'}"
+			title="disable this Category"> </a>
+		<a th:if="${cat.enabled==false}"
+			class="fas fa-circle fa-2x icon-dark link-confirm"
+			th:href="@{'/categories/'+${cat.id}+'/enabled/true'}"
+			title="enable this Category"> </a>
 	</div>
-	
-	
+	<div th:fragment="category_actions" th:remove="tag">
+		<a class="fas fa-edit fa-2x icon-green"
+			th:href="@{'/categories/edit'+${cat.id}}" title="Edit this category"></a>
+		&nbsp;
+		<th:block th:if="${cat.hasChildren==false}">
+			<a class="fas fa-trash fa-2x icon-dark link-delete"
+				th:href="@{'/categories/delete/'+${cat.id}}" th:entityId="${cat.id}"
+				title="Delete this category"></a>
+		</th:block>
+	</div>
 </body>
 </html>
