@@ -3,6 +3,8 @@ package com.shopme.admin.category;
 import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
@@ -127,6 +129,7 @@ public class CategoryController {
 
 	@GetMapping("/categories/delete/{id}")
 	public String deleteCategory(@PathVariable(name = "id") Integer id, Model model,
+
 			RedirectAttributes redirectAttributes) {
 		try {
 			service.delete(id);
@@ -138,5 +141,12 @@ public class CategoryController {
 			// TODO: handle exception
 		}
 		return "redirect:/categories";
+	}
+
+	@GetMapping("/categories/export/csv")
+	public void exportToCSV(HttpServletResponse response) throws IOException {
+		List<Category> listCategories = service.listCategoriesUsedInForm();
+		CategoryCsvExporter exporter = new CategoryCsvExporter();
+		exporter.export(listCategories, response);
 	}
 }
