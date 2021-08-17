@@ -49,8 +49,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		// TODO Auto-generated method stub
-		http.authorizeRequests().antMatchers("/users/**").hasAuthority("Admin").antMatchers("/categories/**")
-				.hasAnyAuthority("Admin", "Editor").
+		http.authorizeRequests().antMatchers("/users/**").hasAuthority("Admin")
+				.antMatchers("/categories/**", "/brands/**").hasAnyAuthority("Admin", "Editor").
 
 				anyRequest().authenticated().and().formLogin().loginPage("/login").usernameParameter("email")
 				.permitAll().and().logout().permitAll().and().rememberMe().rememberMeParameter("remember-me-aaa")
