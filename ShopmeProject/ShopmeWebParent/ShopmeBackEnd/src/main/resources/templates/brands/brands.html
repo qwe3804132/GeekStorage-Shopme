@@ -27,7 +27,9 @@
 				<tbody>
 					<tr th:each="brand : ${listBrands}">
 						<td>[[${brand.id}]]</td>
-						<td></td>
+						<td>
+						<img alt="" th:src="@{${brand.logoPath}}" style="width:100px" class="img-fluid"/>
+						</td>
 						<td>[[${brand.name}]]</td>
 						<td>
 							<th:block th:each="cat:${brand.categories}">
@@ -40,7 +42,7 @@
 								th:replace="fragments::edit('brand','/brands/edit/'+${brand.id})"></div>
 							&nbsp;&nbsp;
 							<div
-								th:replace="fragments::delete('brand',${brand.id},'/brand/delete/'+${brand.id},true)"></div>
+								th:replace="fragments::delete('brand',${brand.id},'/brands/delete/'+${brand.id},true)"></div>
 						</td>
 					</tr>
 				</tbody>
