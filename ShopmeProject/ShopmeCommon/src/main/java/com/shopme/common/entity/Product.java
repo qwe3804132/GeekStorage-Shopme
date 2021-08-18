@@ -40,7 +40,7 @@ public class Product {
 	private float cost;
 	private float price;
 
-	@Column(name = "discount_price")
+	@Column(name = "discount_percent")
 	private float discountPercent;
 
 	private float length;
@@ -50,6 +50,7 @@ public class Product {
 
 	@ManyToOne
 	@JoinColumn(name = "category_id")
+
 	private Category category;
 	@ManyToOne
 	@JoinColumn(name = "brand_id")
