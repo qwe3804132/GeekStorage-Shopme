@@ -93,4 +93,10 @@ public class Brand {
 		return "/brand-logos/" + this.id + "/" + this.logo;
 	}
 
+	public Brand(Integer id, String name) {
+		super();
+		this.id = id;
+		this.name = name;
+	}
+
 }
