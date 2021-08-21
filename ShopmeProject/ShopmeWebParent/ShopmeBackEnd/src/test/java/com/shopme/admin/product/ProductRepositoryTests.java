@@ -90,4 +90,18 @@ public class ProductRepositoryTests {
 
 	}
 
+	@Test
+	public void testSaveProductWithImages() {
+		Integer productId = 1;
+		Product product = repo.findById(productId).get();
+		product.setMainImage("main image.jpg");
+		product.addExtraImage("extra 2.png");
+		product.addExtraImage("extra 3.png");
+		product.addExtraImage("extra 4.png");
+
+		Product savedProduct = repo.save(product);
+		assertThat(savedProduct.getImages().size()).isEqualTo(3);
+
+	}
+
 }

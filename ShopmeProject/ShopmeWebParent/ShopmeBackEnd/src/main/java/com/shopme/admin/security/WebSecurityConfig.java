@@ -50,11 +50,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		// TODO Auto-generated method stub
 		http.authorizeRequests().antMatchers("/users/**").hasAuthority("Admin")
-				.antMatchers("/categories/**", "/brands/**").hasAnyAuthority("Admin", "Editor").
+				.antMatchers("/categories/**", "/brands/**").hasAnyAuthority("Admin", "Editor")
+				.antMatchers("/products/**").hasAnyAuthority("Admin", "Editor", "Salesperson", "Shipper").
 
 				anyRequest().authenticated().and().formLogin().loginPage("/login").usernameParameter("email")
 				.permitAll().and().logout().permitAll().and().rememberMe().rememberMeParameter("remember-me-aaa")
-				.key("remember-me");
+				.key("remember-me").tokenValiditySeconds(7 * 24 * 60 * 60);
 	}
 
 	@Override
