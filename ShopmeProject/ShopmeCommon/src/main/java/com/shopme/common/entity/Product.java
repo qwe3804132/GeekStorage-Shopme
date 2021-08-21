@@ -230,6 +230,13 @@ public class Product {
 		this.images.add(new ProductImage(imageName, this));
 	}
 
+	public String getMainImagePath() {
+		if (id == null || mainImage == null)
+			return "/images/image-thumbnail.png";
+
+		return "/product-images/" + this.id + "/" + this.mainImage;
+	}
+
 	@Override
 	public String toString() {
 		return "Product [id=" + id + ", name=" + name + "]";

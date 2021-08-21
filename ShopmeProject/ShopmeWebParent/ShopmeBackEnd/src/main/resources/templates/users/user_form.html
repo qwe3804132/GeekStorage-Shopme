@@ -83,6 +83,7 @@
 	<div th:replace="modal_fragments::modal_dialog"></div>
 		<div th:replace="fragments::footer"></div>
 		<script type="text/javascript">
+		MAX_FILE_SIZE = 102400;//100kb
 			moduleURL = "[[@{/users}]]";
 			function checkEmailUnique(form) {
 				url = "[[@{/users/check_email}]]";
