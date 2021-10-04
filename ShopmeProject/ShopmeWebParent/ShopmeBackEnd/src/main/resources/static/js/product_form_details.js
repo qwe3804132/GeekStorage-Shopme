@@ -3,7 +3,7 @@
  */
 
 function addNextDetailSection() {
-	allDivDetails = $("[id^='divDetail']");
+	allDivDetails = $("[id^='divDetail']");   //elements who start with given value
 	divDetailsCount = allDivDetails.length;
 
 	nextDivDetailId = divDetailsCount;
