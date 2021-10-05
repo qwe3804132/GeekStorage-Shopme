@@ -15,6 +15,8 @@
 			onsubmit="return checkUnique(this)" th:object="${product}"
 			enctype="multipart/form-data">
 			<input type="hidden" th:field="*{id}" />
+			<input th:if="${product.category !=null}" type="hidden" id="categoryId" th:field="*{category.id}" />
+			
 			<div>
 				<ul class="nav nav-tabs" id="myTab" role="tablist">
 					<li class="nav-item" role="presentation">

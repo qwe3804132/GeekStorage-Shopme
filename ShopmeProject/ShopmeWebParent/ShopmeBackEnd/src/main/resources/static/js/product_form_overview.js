@@ -10,7 +10,7 @@ $(document).ready(function() {
 		getCategories();
 	})
 
-	getCategories();
+	getCategoriesForNewForm();
 
 
 
@@ -29,6 +29,15 @@ function getCategories() {
 	});
 
 }
+function getCategoriesForNewForm() {
+	catIdFiled = $("#categoryId");
+	editMode = false;
+	if (catIdFiled.length) {
+		editMode = true;
+	}
+	if (!editMode) getCategories();
+}
+
 
 
 function checkUnique(form) {
