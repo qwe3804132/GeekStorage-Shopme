@@ -70,16 +70,16 @@ public class Category {
 	private Set<Category> children = new HashSet<>();
 
 	public Category() {
-		super();
+
 	}
 
 	public Category(Integer id) {
-		super();
+
 		this.id = id;
 	}
 
 	public Category(String name) {
-		super();
+
 		this.name = name;
 		this.alias = name;
 		this.image = "default.png";
